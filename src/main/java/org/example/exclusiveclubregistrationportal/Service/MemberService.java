@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-//adding caching
+//adding caching in service
 @Service
 public class MemberService {
     @Autowired
