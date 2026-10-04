@@ -46,4 +46,29 @@ public class MemberService {
        return memberRepository.findAllActiveMembers();
 
    }
+    // 1. Get Single Member
+    public Member getMemberById(Long id) {
+        return memberRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Member not found with ID: " + id));
+    }
+
+    // 2. Update Member
+    public Member updateMember(Long id, MemberDTO memberDTO) {
+        // Find the existing record first
+        Member existingMember = memberRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Member not found with ID: " + id));
+
+        // Update the fields (Modify based on your actual entity fields)
+        existingMember.setName(memberDTO.getName());
+        existingMember.setEmail(memberDTO.getEmail());
+
+        // Save and return the updated record
+        return memberRepository.save(existingMember);
+    }
+
+
+
+
+
+
 }
